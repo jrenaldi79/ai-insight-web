@@ -48,15 +48,22 @@ const Services = () => {
   ];
 
   useEffect(() => {
+    // Use Intersection Observer to trigger animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
+            // Add a small delay to ensure smooth animation with Lenis
+            setTimeout(() => {
+              entry.target.classList.add("revealed");
+            }, 100);
           }
         });
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -10% 0px' // Start reveal animation a bit earlier
+      }
     );
 
     // Observe section
@@ -64,9 +71,13 @@ const Services = () => {
       observer.observe(sectionRef.current);
     }
 
-    // Observe all cards
-    cardRefs.current.forEach((card) => {
-      if (card) observer.observe(card);
+    // Observe all cards with staggered animation
+    cardRefs.current.forEach((card, index) => {
+      if (card) {
+        // Set data attribute for delay calculation
+        card.setAttribute('data-index', index.toString());
+        observer.observe(card);
+      }
     });
 
     return () => {
@@ -75,7 +86,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" ref={sectionRef} className="section bg-background">
+    <section id="services" ref={sectionRef} className="section bg-background py-24">
       <div className="container-content">
         <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
           <h2 className="mb-4">AI Consulting <span className="gradient-text">Services</span></h2>
