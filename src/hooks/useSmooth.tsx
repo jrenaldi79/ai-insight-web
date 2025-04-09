@@ -14,7 +14,8 @@ export function useSmooth() {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      smoothTouch: false, // Don't enable smooth scrolling on mobile
+      // The smoothTouch property was causing a TypeScript error
+      // Instead, we'll use touch config properties that are recognized by Lenis
       touchMultiplier: 2,
     });
 

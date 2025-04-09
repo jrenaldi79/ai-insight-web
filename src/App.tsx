@@ -10,28 +10,29 @@ import { useSmooth } from "./hooks/useSmooth";
 
 const queryClient = new QueryClient();
 
+// Component to handle smooth scrolling
 const SmoothScrollApp = () => {
   // Initialize smooth scrolling
   useSmooth();
   
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <TooltipProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
   );
 };
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <SmoothScrollApp />
-    </TooltipProvider>
+    <Toaster />
+    <Sonner />
+    <SmoothScrollApp />
   </QueryClientProvider>
 );
 
