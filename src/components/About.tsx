@@ -1,4 +1,3 @@
-
 import { Award, Book, Briefcase, GraduationCap, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -54,7 +53,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="section bg-accent/30">
+    <section id="about" className="section bg-gradient-to-br from-violet-500/10 via-pink-500/10 to-orange-400/10">
       <div className="container-content">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="mb-4">About <span className="gradient-text">Me</span></h2>
@@ -66,7 +65,7 @@ const About = () => {
         <div className="grid md:grid-cols-3 gap-10">
           <div className="md:col-span-1">
             <div className="sticky top-24">
-              <div className="aspect-square max-w-[350px] mx-auto bg-gradient-to-br from-primary to-secondary rounded-full overflow-hidden shadow-xl mb-8">
+              <div className="aspect-square max-w-[350px] mx-auto bg-gradient-to-br from-violet-600 to-pink-600 rounded-full overflow-hidden shadow-xl mb-8">
                 <img 
                   src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80"
                   alt="Profile"
@@ -102,7 +101,7 @@ const About = () => {
           </div>
 
           <div className="md:col-span-2">
-            <Card className="mb-10">
+            <Card className="mb-10 border border-violet-200">
               <CardContent className="pt-6">
                 <h3 className="text-2xl font-bold mb-6 flex items-center">
                   <Briefcase className="h-6 w-6 text-primary mr-2" />
@@ -125,7 +124,7 @@ const About = () => {
               </CardContent>
             </Card>
 
-            <Card className="mb-10">
+            <Card className="mb-10 border border-violet-200">
               <CardContent className="pt-6">
                 <h3 className="text-2xl font-bold mb-6 flex items-center">
                   <GraduationCap className="h-6 w-6 text-primary mr-2" />
@@ -148,7 +147,7 @@ const About = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border border-violet-200">
               <CardContent className="pt-6">
                 <h3 className="text-2xl font-bold mb-6 flex items-center">
                   <Users className="h-6 w-6 text-primary mr-2" />

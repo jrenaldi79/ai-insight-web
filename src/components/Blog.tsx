@@ -29,7 +29,7 @@ const Blog = () => {
   ];
 
   return (
-    <section id="blog" className="section bg-accent/30">
+    <section id="blog" className="section bg-gradient-to-br from-violet-500/10 via-pink-500/10 to-orange-400/10">
       <div className="container-content">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="mb-4">Insights & <span className="gradient-text">Articles</span></h2>
@@ -40,7 +40,7 @@ const Blog = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
-            <Card key={index} className="card-hover overflow-hidden">
+            <Card key={index} className="card-hover overflow-hidden border border-violet-200">
               <div className="h-48 overflow-hidden">
                 <img
                   src={post.imageUrl}

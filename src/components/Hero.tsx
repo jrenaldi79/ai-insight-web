@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-accent/30 pt-16 pb-24">
+    <section className="relative overflow-hidden bg-gradient-to-br from-violet-500/10 via-pink-500/10 to-orange-400/10 pt-16 pb-24">
       <div className="container-content">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 max-w-xl">
@@ -25,8 +25,8 @@ const Hero = () => {
             </div>
           </div>
           <div className="hidden md:block relative h-[400px] animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl"></div>
-            <div className="absolute inset-y-8 inset-x-8 bg-gradient-to-br from-primary to-secondary/70 rounded-xl shadow-xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-pink-500/20 rounded-2xl"></div>
+            <div className="absolute inset-y-8 inset-x-8 bg-gradient-to-br from-violet-600 to-pink-600 rounded-xl shadow-xl"></div>
             <div className="absolute inset-y-16 inset-x-16 bg-white/90 rounded-lg shadow-lg flex items-center justify-center">
               <div className="text-center p-6">
                 <h3 className="text-2xl font-bold mb-2">AI-Powered Insights</h3>

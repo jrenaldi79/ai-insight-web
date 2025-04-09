@@ -37,7 +37,7 @@ const Demos = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {demos.map((demo, index) => (
-            <Card key={index} className="card-hover">
+            <Card key={index} className="card-hover border border-violet-200">
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={demo.image}
@@ -57,14 +57,14 @@ const Demos = () => {
                 <CardDescription className="text-base">{demo.description}</CardDescription>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {demo.tags.map((tag, tagIndex) => (
-                    <span key={tagIndex} className="bg-secondary/10 text-secondary px-2 py-1 rounded-full text-xs font-medium">
+                    <span key={tagIndex} className="bg-accent/20 text-accent-foreground px-2 py-1 rounded-full text-xs font-medium">
                       {tag}
                     </span>
                   ))}
                 </div>
               </CardContent>
               <CardFooter>
-                <Button className="w-full">
+                <Button className="w-full purple-pink-gradient text-white hover:opacity-90">
                   Launch Demo
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
