@@ -41,7 +41,7 @@ const Hero = () => {
               Expert consulting to help you implement, optimize, and leverage AI technologies for real business growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <Button size="lg" className="group">
+              <Button size="lg" variant="gradient" className="group">
                 Schedule a Consultation
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>

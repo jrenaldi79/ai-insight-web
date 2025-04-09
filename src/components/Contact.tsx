@@ -119,6 +119,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
+                        className="rounded-full"
                       />
                     </div>
                     <div className="space-y-2">
@@ -131,6 +132,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        className="rounded-full"
                       />
                     </div>
                   </div>
@@ -142,6 +144,7 @@ const Contact = () => {
                       placeholder="Your company"
                       value={formData.company}
                       onChange={handleChange}
+                      className="rounded-full"
                     />
                   </div>
                   <div className="space-y-2">
@@ -154,11 +157,13 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
+                      className="rounded-xl"
                     />
                   </div>
                   <Button 
                     type="submit" 
                     size="lg" 
+                    variant="gradient-orange"
                     className="w-full"
                     disabled={isSubmitting}
                   >

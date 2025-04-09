@@ -64,7 +64,7 @@ const Demos = () => {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button className="w-full purple-pink-gradient text-white hover:opacity-90">
+                <Button variant="gradient" className="w-full">
                   Launch Demo
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
