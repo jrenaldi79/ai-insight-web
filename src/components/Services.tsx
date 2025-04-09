@@ -1,4 +1,5 @@
 
+import { useEffect, useRef } from "react";
 import { 
   Brain, 
   BarChart, 
@@ -10,6 +11,9 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Services = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const services = [
     {
       icon: <Brain className="h-10 w-10 text-primary" />,
@@ -43,10 +47,37 @@ const Services = () => {
     }
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Observe section
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    // Observe all cards
+    cardRefs.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section id="services" className="section bg-background">
+    <section id="services" ref={sectionRef} className="section bg-background">
       <div className="container-content">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
           <h2 className="mb-4">AI Consulting <span className="gradient-text">Services</span></h2>
           <p className="text-lg text-muted-foreground">
             Comprehensive AI consulting services to help your business innovate, optimize, and grow with cutting-edge technology.
@@ -55,7 +86,12 @@ const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="card-hover border border-violet-200">
+            <Card 
+              key={index} 
+              className="card-hover border border-violet-200 scroll-reveal"
+              ref={el => cardRefs.current[index] = el}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
               <CardHeader className="pb-2">
                 <div className="mb-4">{service.icon}</div>
                 <CardTitle>{service.title}</CardTitle>

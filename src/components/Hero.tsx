@@ -1,13 +1,39 @@
 
+import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const heroContentRef = useRef<HTMLDivElement>(null);
+  const heroImageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (statsRef.current) observer.observe(statsRef.current);
+    if (heroContentRef.current) observer.observe(heroContentRef.current);
+    if (heroImageRef.current) observer.observe(heroImageRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-violet-500/10 via-pink-500/10 to-orange-400/10 pt-16 pb-24">
       <div className="container-content">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 max-w-xl">
+          <div ref={heroContentRef} className="space-y-6 max-w-xl scroll-reveal">
             <h1 className="animate-fade-in">
               AI Solutions <span className="gradient-text">For Your Business</span>
             </h1>
@@ -24,7 +50,7 @@ const Hero = () => {
               </Button>
             </div>
           </div>
-          <div className="hidden md:block relative h-[400px] animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          <div ref={heroImageRef} className="hidden md:block relative h-[400px] animate-fade-in scroll-reveal" style={{ animationDelay: "0.3s" }}>
             <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-pink-500/20 rounded-2xl"></div>
             <div className="absolute inset-y-8 inset-x-8 bg-gradient-to-br from-violet-600 to-pink-600 rounded-xl shadow-xl"></div>
             <div className="absolute inset-y-16 inset-x-16 bg-white/90 rounded-lg shadow-lg flex items-center justify-center">
@@ -37,7 +63,7 @@ const Hero = () => {
         </div>
         
         {/* Stats Section */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+        <div ref={statsRef} className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in scroll-reveal" style={{ animationDelay: "0.4s" }}>
           <div className="text-center">
             <p className="text-4xl font-bold gradient-text">98%</p>
             <p className="text-muted-foreground mt-2">Client Satisfaction</p>
